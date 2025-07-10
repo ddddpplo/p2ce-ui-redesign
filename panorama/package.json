@@ -1,0 +1,41 @@
+{
+	"name": "p2ce-panorama",
+	"version": "1.0.0",
+	"description": "Scripts for handling P2CE Panorama files",
+	"config": {
+		"baseDir": "./"
+	},
+	"scripts": {
+		"build": "tsc",
+		"watch": "tsc --watch",
+		"format:fix": "prettier --write **/*.{js,xml,scss,css,md,ts}",
+		"format:check": "prettier --check **/*.{js,xml,scss,css,md,ts}",
+		"lint:fix": "eslint \"**/*.js\" --fix",
+		"lint:check": "eslint \"**/*.js\"",
+		"prepare": "husky install",
+		"pre-commit": "lint-staged"
+	},
+	"author": "P2CE & Momentum Team",
+	"license": "MIT",
+	"dependencies": {},
+	"devDependencies": {
+		"husky": "^8.0.1",
+		"lint-staged": "^12.4.1",
+		"prettier": "^2.6.2",
+		"@prettier/plugin-xml": "^2.1.0",
+		"axios": "^0.26.0",
+		"papaparse": "^5.3.1",
+		"eslint": "^8.27.0",
+		"prettier-eslint": "^15.0.1",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-prettier": "^4.2.1",
+		"eslint-plugin-unicorn": "^44.0.2",
+		"typescript": "5.4.3"
+	},
+	"lint-staged": {
+		"**/*.{js,xml,scss,css,md}": [
+			"prettier --write"
+		],
+		"**/*.js": "eslint --fix"
+	}
+}

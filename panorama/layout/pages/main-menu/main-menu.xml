@@ -1,0 +1,102 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/main.scss" />
+	</styles>
+	<scripts>
+		<include src="file://{scripts}/pages/main-menu/main-menu.ts" />
+		<include src="file://{scripts}/util/dosa.ts" />
+	</scripts>
+
+	<snippets>
+		<snippet name="MainMenuMovieSnippet">
+			<Panel>
+				<!-- Source is set in script. -->
+				<!-- Set what you want the movie to be using the data-type example 'nuke' the .webm is appended in script. -->
+				<Movie
+					id="MainMenuMovie"
+					class="mainmenu__movie MainMenuModeOnly"
+					src=""
+					sound=""
+					controls="none"
+					repeat="true"
+					hittest="false"
+				>
+				</Movie>
+			</Panel>
+		</snippet>
+	</snippets>
+
+	<MainMenu
+		class="InitialDisplay MainMenuRootPanel"
+		hittest="false"
+		onload="MainMenu.onMainMenuLoaded();"
+		useglobalcontext="false"
+	>
+		
+		<Panel id="MainMenuInput" class="mainmenu">
+			<!-- Full page blur: used to blur everything below the drawer -->
+				<Panel class="mainmenu__container">
+					<!-- Backgrounds -->
+					<!-- Background blur: used to blur the backgrounds behind mainmenu pages -->
+						
+						<!-- Navlist blur: used to blur the background behind the navlist -->
+					<BaseBlurTarget id="MainMenuNavlistBlur" class="mainmenu__navlist-blur" blurrects="MainMenuNavlistBlurRect" enabled="true">
+						
+						<!-- Movie background -->
+						<Panel id="MainMenuMovieParent" class="mainmenu__background MainMenuModeOnly" />
+
+						<!-- Static image background -->
+						<Image id="MainMenuBackground" class="mainmenu__background MainMenuModeOnly" />	
+						
+						<!-- Backbuffer blur: used to blur the backbuffer in the pause menu -->
+						<BaseBlurTarget id="PauseMenuMainMenuBlur" class="mainmenu__pause-blur" blurrects="PauseMenuMainMenuContent">
+							<!-- Backbuffer background -->
+							<BackbufferImagePanel class="mainmenu__background PauseMenuModeOnly" />
+						</BaseBlurTarget>
+						
+					</BaseBlurTarget>
+
+					<!-- /Backgrounds -->
+
+					<Panel class="mainmenu__content">
+						
+						<Panel id="PauseMenuMainMenuContent" class="mainmenu__pause-content-blur" />
+
+						<Panel id="HomeContent" class="mainmenu__home-container home">
+							<Panel class="mainmenu__alignment">
+								<Image id="Portal2Logo" class="mainmenu__logo" src="file://{images}/menu/portal2/portal2logo.png"> </Image>
+								
+								<Panel class="mainmenu__navlist-container">
+									<Panel id="MainMenuNavlistBlurRect" class="mainmenu__navlist-blur-rect">
+										<Frame id="MainMenuNavlistFrame" 
+											src="file://{resources}/layout/pages/main-menu/main-menu-navlist.xml"
+											defaultsrc="file://{resources}/layout/pages/main-menu/main-menu-navlist.xml">
+										</Frame>
+									</Panel>
+									<Panel class="mainmenu__bottom-buttons-container" hittest="true">
+										<Button class="mainmenu__bottom-button white-hover-button" onclick="MainMenu.quitGame();">
+											<Image src="file://{images}/reset.svg" texturewidth="35" textureheight="35"/>
+											<Label text="Back"/>
+										</Button>
+										<Button class="mainmenu__bottom-button white-hover-button">
+											<Image src="file://{images}/play.svg" texturewidth="35" textureheight="35"/>
+											<Label text="Play"/>
+										</Button>
+									</Panel>
+								</Panel>
+							</Panel>
+						</Panel>
+					</Panel>
+				</Panel>
+		</Panel>
+
+		<!-- Make sure these are at the bottom to get the z-order right -->
+		<PopupManager id="PopupManager" onpopupsdismissed="" />
+		<ContextMenuManager id="ContextMenuManager" />
+		<TooltipManager id="TooltipManager" hittest="false" />
+
+		<!-- Doesn't actually include the notifications, but we use its position to figure out where to show them -->
+		<Panel id="SteamNotificationsPlaceholder" hittest="false" />
+		
+	</MainMenu>
+</root>

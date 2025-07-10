@@ -1,0 +1,24 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/main.scss" />
+	</styles>
+
+
+	<SettingsSlider class="settings-slider">
+		<Panel class="settings-slider__title-container">
+			<Label class="settings-slider__title" id="Title" />
+		</Panel>
+		<Panel class="settings-slider__input-container">
+			<Slider
+				class="slider slider--horizontal settings-slider__slider"
+				showdefault="true"
+				direction="horizontal"
+				id="Slider"
+			/>
+			<TooltipPanel tooltip="#Settings_General_OutOfBounds" class="full-height">
+				<Image class="settings-slider__outofbounds" src="file://{images}/alert-octagon.svg" texturewidth="32" />
+			</TooltipPanel>
+			<TextEntry class="textentry settings-slider__textentry" maxchars="6" textmode="numeric" id="Value" />
+		</Panel>
+	</SettingsSlider>
+</root>

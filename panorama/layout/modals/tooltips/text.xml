@@ -1,0 +1,9 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/main.scss" />
+	</styles>
+
+	<TooltipText class="tooltip__text-panel">
+		<Label id="TextLabel" class="tooltip__text" html="true" allowrawtext="true" />
+	</TooltipText>
+</root>

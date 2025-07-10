@@ -1,0 +1,123 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/main.scss" />
+	</styles>
+	<scripts>
+		<include src="file://{scripts}/pages/settings/page.js" />
+		<!-- Temporary -->
+		<include src="file://{scripts}/util/dosa.ts" />
+	</scripts>
+
+	<Panel class="settings-page">
+
+		<Panel class="settings-page__header">
+
+			<Label class="settings-page__title" text="#Settings_Interface" />
+
+			<Panel class="settings-page__header-buttons">
+			</Panel>
+
+		</Panel>
+
+		<Panel id="SettingsPageContainer" class="settings-page__container">
+
+			<Panel id="UISubSection" class="settings-group">
+
+				<Panel class="settings-group__header">
+
+					<Label class="settings-group__title" text="#Settings_Menu_Title" tags="menu,ui" />
+
+					<TooltipPanel class="settings-group__reset" tooltip="#Settings_General_Reset">
+						<Button class="button settings-group__reset" onactivate="SettingsShared.resetSettings('UISubSection');">
+							<Image class="button__icon" src="file://{images}/reset.svg" />
+						</Button>
+					</TooltipPanel>
+
+				</Panel>
+
+				<SettingsEnum text="#Settings_Menu_Console" convar="con_enable" hasdocspage="false" tags="console">
+					<RadioButton group="enableconsole" text="#Common_Off" value="0" />
+					<RadioButton group="enableconsole" text="#Common_On" value="1" />
+				</SettingsEnum>
+
+				<SettingsEnum
+					text="#Settings_Menu_Movie"
+					psvar="settings.mainMenuMovie"
+					infomessage="#Settings_Menu_Movie_Info"
+					tags="background,video,movie"
+				>
+					<RadioButton
+						group="mainmenuvideo"
+						text="#Common_Off"
+						value="0"
+						activateoverride="$.DispatchEvent('ReloadBackground');"
+					/>
+					<RadioButton
+						group="mainmenuvideo"
+						text="#Common_On"
+						value="1"
+						activateoverride="$.DispatchEvent('ReloadBackground');"
+					/>
+				</SettingsEnum>
+
+				<SettingsEnumDropDown
+					text="#Settings_Menu_Type"
+					psvar="settings.mainMenuBackground"
+					submitoverride="$.DispatchEvent('ReloadBackground');"
+					infomessage="#Settings_Menu_Type_Info"
+					tags="background,video,movie"
+				>
+					<Label text="#Settings_Menu_Type0" value="0" id="bgtype0" />
+					<Label text="#Settings_Menu_Type1" value="1" id="bgtype1" />
+				</SettingsEnumDropDown>
+
+				<!-- TODO: LOCALISE AND MOVE THIS SOMEWHERE ELSE!!!! -->
+				<SettingsEnum id="SentryReporting" text="Sentry Crash Reporting" infomessage="Sentry" hasdocspage="false" tags="sentry">
+					<Button class="button horizontal-align-right" onactivate="SettingsShared.sentryUpdateConsent()">
+						<Label class="button__text" text="Update Consent" />
+					</Button>
+				</SettingsEnum>
+
+				<!-- TODO: Temp! -->
+				<SettingsEnum
+					text="Discord Rich Presence"
+					infomessage="Enables the display of your current game's state in Discord"
+					convar="cl_richpresence_enable"
+					hasdocspage="false"
+					tags="richpresence"
+				>
+					<RadioButton group="enablerpc" text="#Common_Off" value="0" />
+					<RadioButton group="enablerpc" text="#Common_On" value="1" />
+				</SettingsEnum>
+
+				<SettingsEnum
+					text="Playtest consent"
+					infomessage="Playtest consent"
+					convar="cl_playtest_enabled"
+					hasdocspage="false"
+					tags="consent"
+				>
+					<RadioButton group="enableconsent" text="#Common_Off" value="0" />
+					<RadioButton group="enableconsent" text="#Common_On" value="1" />
+				</SettingsEnum>
+
+				<ConVarEnabler convar="developer" togglevisibility="true">
+					<SettingsEnum
+						id="PlaytestDOSARemove"
+						text="Playtest DOSA remove"
+						infomessage="Remove DOSA from playtest consent (For development purposes)"
+						hasdocspage="false"
+						tags="dosa"
+					>
+						<Button class="button horizontal-align-right" onactivate="SettingsShared.PlayTestDosaRemove()">
+							<Label class="button__text" text="Remove DOSA" />
+						</Button>
+					</SettingsEnum>
+				</ConVarEnabler>
+
+			</Panel>
+
+			<Panel class="settings-page__spacer" />
+		</Panel>
+	</Panel>
+</root>

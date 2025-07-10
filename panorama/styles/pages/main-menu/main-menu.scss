@@ -1,0 +1,458 @@
+@use '../../config' as *;
+@use '../../abstract/function';
+@use '../../abstract/mixin';
+
+$page-transition-duration: 0.15s;
+$page-transition-timing-func: ease-in-out;
+
+#TooltipManager,
+#ContextMenuManager,
+#PopupManager,
+.MainMenuRootPanel {
+	width: 100%;
+	height: 100%;
+}
+
+.MainMenuRootPanel.PopupBackgroundBlur #MainMenuInput {
+	blur: gaussian(8, 8, 5);
+	-s2-mix-blend-mode: opaque;
+}
+
+.MainMenuModeOnly {
+	visibility: visible;
+}
+
+.MainMenuRootPanel--PauseMenuMode .MainMenuModeOnly {
+	visibility: collapse;
+}
+
+.PauseMenuModeOnly {
+	visibility: collapse;
+}
+
+.MainMenuRootPanel--PauseMenuMode .PauseMenuModeOnly {
+	visibility: visible;
+}
+
+$rightnav-width: 50px;
+$drawer-width: 768px;
+
+.mainmenu {
+	width: 100%;
+	height: 100%;
+
+	&__container {
+		width: 100%; // counteract blur 125% size
+		height: 100%; // counteract blur 125% size
+	}
+
+	&__background {
+		width: 100%;
+		height: 100%;
+	}
+
+	&__background-blur {
+		width: 100%;
+		height: 100%;
+		blur: fastgaussian(2, 2, 4);
+	}
+
+	&__content-blur {
+		// Let this panel clip outside the page so the blur applies all the way to the edges
+		// mainmenu__container will constrain all children to 1920x1080
+		width: 125%;
+		height: 125%;
+		overflow: noclip;
+		blur: fastgaussian(8, 8, 5);
+	}
+
+	&__pause-blur {
+		width: 100%;
+		height: 100%;
+		blur: fastgaussian(2, 2, 4);
+	}
+	
+	&__navlist-blur {
+		width: 100%;
+		height: 100%;
+		blur: fastgaussian(2, 2, 6);
+	}
+
+	&__movie {
+		height: 1080px;
+		width: 100%;
+		min-width: 1920px;
+		overflow: noclip;
+	}
+
+	&__content {
+		width: fill-parent-flow(1);
+		height: fill-parent-flow(1);
+		margin-top: 0;
+	}
+	
+	&__alignment {
+		margin-left:105px;
+		height:100%;
+	}
+	
+	&__logo {
+		margin-top:120px;
+	}
+	
+	&__navlist-container {
+		vertical-align: middle;
+		margin-top:300px;
+		flow-children:down;
+	}
+	
+	&__navlist {
+		background-color: #16161690;
+		width:590px;
+		flow-children:down;
+	}
+	
+	&__navitem-title {
+		background-color: #2eb8ee30;
+		height:80px;
+		width:100%;
+		flow-children:right;
+		> Label {
+			color: white;
+			text-shadow:none;
+			vertical-align: middle;
+			font-size:25px;
+			font-weight:bold;
+			margin-left:25px;
+		}
+	}
+	
+	&__navitem {
+		background-color: transparent;
+		height:80px;
+		width:100%;
+		flow-children:right;
+		> Label {
+			color: white;
+			text-shadow:none;
+			vertical-align: middle;
+			font-size:25px;
+			font-weight:bold;
+			transform: translateX(0px);
+			
+		}
+		> Image {
+			color:white;
+			wash-color:white;
+			vertical-align: middle;
+			margin:0 22px;
+		}
+		
+		&:hover {
+			> Label {
+				color:#222;
+				transform:translateX(12px);
+			}
+			> Image {
+				wash-color:#222;
+			}
+		}
+	}
+	
+	&__bottom-buttons-container {
+		height:80px;
+		flow-children:right;
+	}
+	
+	&__bottom-button {
+		background-color: #1d1d1ddd;
+		height:60px;
+		width:180px;
+		vertical-align:middle;
+		margin-right:8px;
+		flow-children:right;
+		> Label {
+			font-size:25px;
+			font-weight:bold;
+			vertical-align:middle;
+			text-shadow:none;
+		}
+		> Image {
+			color:white;
+			wash-color:white;
+			vertical-align: middle;
+			margin:0 20px;
+		}
+	}
+
+	&__home-container,
+	&__page-container {
+		width: 100%;
+		height: 100%;
+		opacity: 1;
+		transition-property: opacity;
+		transition-duration: $page-transition-duration;
+		transition-timing-function: $page-transition-timing-func;
+
+		&--hidden {
+			opacity: 0;
+		}
+	}
+
+	// BaseBlurTarget needs a translucent background to draw on/over/behind/whatever for some reason
+	&__pause-content-blur {
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.005);
+	}
+
+	&__page-blur {
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.875);
+	}
+	
+	&__navlist-blur-rect {
+		background-color: rgba(0, 0, 0, 0.005);
+	}
+
+	&__page {
+		flow-children: down;
+		width: 100%;
+		max-width: 2560px;
+		height: 100%;
+		padding: 30px;
+		horizontal-align: middle;
+
+		transition-property: opacity;
+		transition-duration: 0s;
+		transition-timing-function: ease-in-out;
+	}
+
+	&__fadeout {
+		animation-name: FadeOut;
+		animation-duration: 3s;
+		animation-timing-function: ease-out;
+		animation-iteration-count: 1;
+		opacity: 0;
+	}
+}
+
+.chapterselect {
+	background-color: #16161690;
+	flow-children:down;
+	width:1180px;
+	
+	&__chapters-thumbnails-container {
+		flow-children:right;
+		width:1180px;
+	}
+	
+	&__chapter-list-container {
+		width:590px;
+		height:400px;
+	}
+	
+	&__chapter-list {
+		width:100%;
+		flow-children:down;
+		overflow:scroll;
+	}
+	
+	&__chapter-list-scroll-shadow {
+		&__top {
+			vertical-align: top;
+			height:20px;
+			background-color: gradient( linear, 0% 0%, 0% 100%, from( #111b ), to( transparent ) );
+			width:100%;
+		}
+		
+		&__bottom {
+			vertical-align: bottom;
+			height:20px;
+			background-color: gradient( linear, 0% 0%, 0% 100%, from( transparent ), to( #111b ) );
+			width:100%;
+		}
+	}
+	
+	&__preview-container {
+		width:590px;
+		height:100%;
+		background-color: #222b;
+	}
+	
+	&__preview-alignment {
+		flow-children:down;
+		horizontal-align:middle;
+		height:100%;
+		width:550px;
+	}
+	
+	&__thumbnail {
+		margin-top:16px;
+		width:550px;
+		height:309px;
+	}
+	
+	&__chaptertitle {
+		font-size:25px;
+		font-weight:bold;
+		width:590px;
+		margin-bottom:20px;
+		vertical-align:bottom;
+	}
+	
+	&__chapter-button {
+		background-color: transparent;
+		height:72px;
+		width:580px;
+		flow-children:right;
+		> Label {
+			color: white;
+			text-shadow:none;
+			vertical-align: middle;
+			font-size:25px;
+			font-weight:bold;
+			transform: translateX(0px);
+			transition: transform 0.15s ease-in-out 0.0s, color 0.15s ease-in-out 0.0s;
+			margin-left:25px;
+		}	
+		&:hover {
+			background-color: white;
+			> Label {
+				color:#222;
+				transform:translateX(12px);
+			}
+		}
+	}
+}
+
+.home {
+	&__wrapper {
+		width: 100%;
+		max-width: 2560px;
+		height: 100%;
+		horizontal-align: middle;
+		flow-children: right;
+	}
+
+	&__newspanel {
+		margin: 24px;
+		background-color: rgba(0, 0, 0, 0.6);
+	}
+
+	&__modelpanel {
+		width: fill-parent-flow(1);
+		max-width: 700px;
+		height: 100%;
+		horizontal-align: middle;
+		vertical-align: middle;
+
+		opacity: 1;
+		blur: gaussian(0, 0, 0);
+		transition-property: opacity, blur, pre-transform-scale2d, transform;
+		transition-duration: 0.15s;
+		transition-timing-function: ease-in-out;
+
+		&--hidden {
+			opacity: 0;
+			transform: translateY(300px);
+			blur: gaussian(10, 10, 4);
+			pre-transform-scale2d: 0.8;
+			transition-delay: 0.1s;
+			transition-duration: 0.25s;
+		}
+	}
+
+	&__bottombar {
+		flow-children: right;
+		horizontal-align: left;
+		vertical-align: bottom;
+	}
+
+	&--hidden {
+		visibility: collapse;
+	}
+}
+
+.bottombar {
+	$root: &;
+	margin: 24px;
+	width: 100%;
+
+	&__button {
+		width: 60px;
+		height: width-percentage(100%);
+		margin: 0 2px;
+		transition-property: transform;
+		transition-timing-function: ease-in-out;
+		transition-duration: 0.2s;
+
+		&:hover {
+			transform: translateY(-6px);
+		}
+	}
+
+	&__icon {
+		width: 100%;
+		height: width-percentage(100%);
+		padding: 8px;
+		vertical-align: middle;
+
+		opacity: 0.8;
+
+		transition-property: opacity, img-shadow;
+		transition-timing-function: ease-out;
+		transition-duration: 0.2s;
+		img-shadow: 0 0 16px 2 black;
+
+		#{$root}__button:hover & {
+			opacity: 1;
+			img-shadow: 0 0 24px 2 $orange;
+		}
+	}
+
+	&__text {
+		align: center center;
+		text-align: center;
+		overflow: squish;
+		text-overflow: shrink;
+		@include mixin.font-styles($use-header: true);
+	}
+
+	&__notice {
+		text-align: center;
+		vertical-align: center;
+		horizontal-align: right;
+		overflow: squish;
+		font-size: 32px;
+		text-shadow: 1px 2px 2px black;
+	}
+
+	&__tooltip {
+		tooltip-position: top;
+		tooltip-arrow-position: 50% 50%;
+		tooltip-body-position: 50% 50%;
+	}
+}
+
+.white-hover-button {
+	transition: background-color 0.15s ease-in-out 0.0s;
+	> Label {
+		color:white;
+		transition: transform 0.15s ease-in-out 0.0s, color 0.15s ease-in-out 0.0s;
+	}
+	> Image {
+		wash-color:white;
+		transition: wash-color 0.15s ease-in-out 0.0s;
+	}
+	&:hover {
+		background-color: white;
+		> Label {
+			color:#222;
+		}
+		> Image {
+			wash-color:#222;
+		}
+	}
+}

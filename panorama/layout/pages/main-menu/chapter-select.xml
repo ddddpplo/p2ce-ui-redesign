@@ -1,0 +1,68 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/main.scss" />
+	</styles>
+	<scripts>
+		<include src="file://{scripts}/pages/main-menu/chapter-select.ts" />
+	</scripts>
+	<Panel>
+		<Panel class="chapterselect" hittest="true">
+			
+			<Panel class="mainmenu__navitem-title">
+				<Label text="Start New Game"/>
+			</Panel>
+			
+			<Panel class="chapterselect__chapters-thumbnails-container">
+				<Panel class="chapterselect__chapter-list-container">
+					<Panel class="chapterselect__chapter-list-scroll-shadow__top"/>
+					<Panel class="chapterselect__chapter-list-scroll-shadow__bottom"/>
+					<Panel class="chapterselect__chapter-list">
+						<Button class="chapterselect__chapter-button white-hover-button" onactivate="ChapterSelect.setPage('settings');">
+							<Label text="#portal2_Chapter1_Subtitle"/>
+						</Button>
+						
+						<Button class="chapterselect__chapter-button white-hover-button" onactivate="ChapterSelect.clickChapterButton(2);">
+							<Label text="The Cold Boot"/>
+						</Button>
+						
+						<Button class="chapterselect__chapter-button white-hover-button" onactivate="ChapterSelect.clickChapterButton(3);">
+							<Label text="The Return"/>
+						</Button>
+						
+						<Button class="chapterselect__chapter-button white-hover-button" onactivate="ChapterSelect.clickChapterButton(4);">
+							<Label text="The Surprise"/>
+						</Button>
+						
+						<Button class="chapterselect__chapter-button white-hover-button" onactivate="ChapterSelect.clickChapterButton(5);">
+							<Label text="The Escape"/>
+						</Button>
+						
+						<Button class="chapterselect__chapter-button white-hover-button" onactivate="ChapterSelect.clickChapterButton(6);">
+							<Label text="The Fall"/>
+						</Button>
+						
+						<Button class="chapterselect__chapter-button white-hover-button" onactivate="ChapterSelect.clickChapterButton(7);">
+							<Label text="The Reunion"/>
+						</Button>
+						
+						<Button class="chapterselect__chapter-button white-hover-button" onactivate="ChapterSelect.clickChapterButton(8);">
+							<Label text="The Itch"/>
+						</Button>
+						
+						<Button class="chapterselect__chapter-button white-hover-button" onactivate="ChapterSelect.clickChapterButton(9);">
+							<Label text="The Part Where He Kills You"/>
+						</Button>
+					</Panel>
+				</Panel>
+				
+				<Panel class="chapterselect__preview-container">
+					<Panel class="chapterselect__preview-alignment">
+						<Image id="ChapterThumbnail" src="file://{images}/menu/chapter_thumbnails/chapter1.png" class="chapterselect__thumbnail"/>
+						<Label id="ChapterTitle" class="chapterselect__chaptertitle" text="Chapter 1 • The Courtesy Call"/>
+					</Panel>
+				</Panel>
+			</Panel>
+			
+		</Panel>
+	</Panel>
+</root>

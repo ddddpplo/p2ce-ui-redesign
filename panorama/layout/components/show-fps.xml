@@ -1,0 +1,9 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/main.scss" />
+	</styles>
+
+	<FPSMeter class="fpsmeter">
+		<Label id="FPSLabel" class="fpsmeter__label" />
+	</FPSMeter>
+</root>
