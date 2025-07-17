@@ -72,10 +72,17 @@ $drawer-width: 768px;
 		blur: fastgaussian(2, 2, 4);
 	}
 	
-	&__navlist-blur {
+	&__page-blur {
 		width: 100%;
 		height: 100%;
 		blur: fastgaussian(2, 2, 6);
+		
+		&--page-transition {
+			animation-name: PageBlurFadeOutIn;
+			animation-duration: 0.3s;
+			animation-timing-function: linear;
+			animation-iteration-count: 1;
+		}
 	}
 
 	&__movie {
@@ -100,10 +107,8 @@ $drawer-width: 768px;
 		margin-top:120px;
 	}
 	
-	&__navlist-container {
-		vertical-align: middle;
-		margin-top:300px;
-		flow-children:down;
+	&__pages-container {
+		height:100%;
 	}
 	
 	&__navlist {
@@ -158,35 +163,9 @@ $drawer-width: 768px;
 			}
 		}
 	}
-	
-	&__bottom-buttons-container {
-		height:80px;
-		flow-children:right;
-	}
-	
-	&__bottom-button {
-		background-color: #1d1d1ddd;
-		height:60px;
-		width:180px;
-		vertical-align:middle;
-		margin-right:8px;
-		flow-children:right;
-		> Label {
-			font-size:25px;
-			font-weight:bold;
-			vertical-align:middle;
-			text-shadow:none;
-		}
-		> Image {
-			color:white;
-			wash-color:white;
-			vertical-align: middle;
-			margin:0 20px;
-		}
-	}
 
 	&__home-container,
-	&__page-container {
+	/*&__page-container {
 		width: 100%;
 		height: 100%;
 		opacity: 1;
@@ -197,7 +176,7 @@ $drawer-width: 768px;
 		&--hidden {
 			opacity: 0;
 		}
-	}
+	}*/
 
 	// BaseBlurTarget needs a translucent background to draw on/over/behind/whatever for some reason
 	&__pause-content-blur {
@@ -211,23 +190,6 @@ $drawer-width: 768px;
 		height: 100%;
 		background-color: rgba(0, 0, 0, 0.875);
 	}
-	
-	&__navlist-blur-rect {
-		background-color: rgba(0, 0, 0, 0.005);
-	}
-
-	&__page {
-		flow-children: down;
-		width: 100%;
-		max-width: 2560px;
-		height: 100%;
-		padding: 30px;
-		horizontal-align: middle;
-
-		transition-property: opacity;
-		transition-duration: 0s;
-		transition-timing-function: ease-in-out;
-	}
 
 	&__fadeout {
 		animation-name: FadeOut;
@@ -239,9 +201,13 @@ $drawer-width: 768px;
 }
 
 .chapterselect {
-	background-color: #16161690;
 	flow-children:down;
 	width:1180px;
+	
+	&__body {
+		flow-children:down;
+		background-color: #16161690;
+	}
 	
 	&__chapters-thumbnails-container {
 		flow-children:right;
@@ -294,12 +260,21 @@ $drawer-width: 768px;
 		height:309px;
 	}
 	
-	&__chaptertitle {
-		font-size:25px;
-		font-weight:bold;
+	&__chaptertitle-container {
 		width:590px;
 		margin-bottom:20px;
 		vertical-align:bottom;
+		flow-children:right;
+	}
+	
+	&__chapter-number-title {
+		font-size:25px;
+		font-weight:normal;
+	}
+	
+	&__chapter-title {
+		font-size:25px;
+		font-weight:bold;
 	}
 	
 	&__chapter-button {
@@ -316,9 +291,9 @@ $drawer-width: 768px;
 			transform: translateX(0px);
 			transition: transform 0.15s ease-in-out 0.0s, color 0.15s ease-in-out 0.0s;
 			margin-left:25px;
-		}	
-		&:hover {
-			background-color: white;
+		}
+		&--selected {
+			background-color:white;
 			> Label {
 				color:#222;
 				transform:translateX(12px);
@@ -375,7 +350,7 @@ $drawer-width: 768px;
 	}
 }
 
-.bottombar {
+.bottombar { // old P2CE stuff, might be useful but I'll probably delete it later
 	$root: &;
 	margin: 24px;
 	width: 100%;
@@ -453,6 +428,59 @@ $drawer-width: 768px;
 		}
 		> Image {
 			wash-color:#222;
+		}
+	}
+}
+.grey-hover-button {
+	transition: background-color 0.15s ease-in-out 0.0s;
+	&:hover {
+		background-color: #ffffff08;
+	}
+}
+
+.menu-page {
+	animation-timing-function: ease-out;
+	animation-iteration-count: 1;
+	transform:none;
+	vertical-align: middle;
+	margin-top:300px;
+	flow-children:down;
+	
+	&--hidden {
+		animation-name: FadeOutDown;
+		animation-duration: 0.15s;
+		opacity: 0;
+	}
+	
+	&--shown {
+		animation-name: FadeInUp;
+		animation-duration: 0.3s;
+		opacity:1;
+	}
+	
+	&__bottom-buttons-container {
+		flow-children:right;
+		height:80px;
+	}
+	
+	&__bottom-button {
+		background-color: #2228;
+		height:60px;
+		width:180px;
+		vertical-align:middle;
+		margin-right:8px;
+		flow-children:right;
+		> Label {
+			font-size:25px;
+			font-weight:bold;
+			vertical-align:middle;
+			text-shadow:none;
+		}
+		> Image {
+			color:white;
+			wash-color:white;
+			vertical-align: middle;
+			margin:0 20px;
 		}
 	}
 }

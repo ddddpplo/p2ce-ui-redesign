@@ -37,10 +37,10 @@
 			<!-- Full page blur: used to blur everything below the drawer -->
 				<Panel class="mainmenu__container">
 					<!-- Backgrounds -->
-					<!-- Background blur: used to blur the backgrounds behind mainmenu pages -->
 						
-						<!-- Navlist blur: used to blur the background behind the navlist -->
-					<BaseBlurTarget id="MainMenuNavlistBlur" class="mainmenu__navlist-blur" blurrects="MainMenuNavlistBlurRect" enabled="true">
+					<!-- Page blur: used to blur the background behind pages -->
+					<!-- Add extra stuff to blurrects to get it to blur other pages -->
+					<BaseBlurTarget id="MainMenuPageBlur" class="mainmenu__page-blur" blurrects="MainMenuNavlist" enabled="true">
 						
 						<!-- Movie background -->
 						<Panel id="MainMenuMovieParent" class="mainmenu__background MainMenuModeOnly" />
@@ -66,21 +66,44 @@
 							<Panel class="mainmenu__alignment">
 								<Image id="Portal2Logo" class="mainmenu__logo" src="file://{images}/menu/portal2/portal2logo.png"> </Image>
 								
-								<Panel class="mainmenu__navlist-container">
-									<Panel id="MainMenuNavlistBlurRect" class="mainmenu__navlist-blur-rect">
-										<Frame id="MainMenuNavlistFrame" 
-											src="file://{resources}/layout/pages/main-menu/main-menu-navlist.xml"
-											defaultsrc="file://{resources}/layout/pages/main-menu/main-menu-navlist.xml">
-										</Frame>
-									</Panel>
-									<Panel class="mainmenu__bottom-buttons-container" hittest="true">
-										<Button class="mainmenu__bottom-button white-hover-button" onclick="MainMenu.quitGame();">
-											<Image src="file://{images}/reset.svg" texturewidth="35" textureheight="35"/>
-											<Label text="Back"/>
+								<Panel id="MainMenuPagesContainer" class="mainmenu__pages-container">
+									<Panel id="MainMenuNavlist" class="mainmenu__navlist menu-page menu-page--shown menu-page__blur-rect" hittest="true">
+										<Button class="mainmenu__navitem white-hover-button MainMenuModeOnly" onactivate="MainMenu.openPage('chapter-select');">
+											<Image src="file://{images}/play.svg" texturewidth="35" textureheight="35" />
+											<Label text="Singleplayer"/>
 										</Button>
-										<Button class="mainmenu__bottom-button white-hover-button">
-											<Image src="file://{images}/play.svg" texturewidth="35" textureheight="35"/>
-											<Label text="Play"/>
+										<Button class="mainmenu__navitem white-hover-button MainMenuModeOnly" >
+											<Image src="file://{images}/coop.svg" texturewidth="35" textureheight="35" />
+											<Label text="Cooperative"/>
+										</Button>
+
+										<Button class="mainmenu__navitem white-hover-button MainMenuModeOnly" >
+											<Image src="file://{images}/lobby.svg" texturewidth="35" textureheight="35" />
+											<Label text="Community Chambers"/>
+										</Button>
+										<Button class="mainmenu__navitem white-hover-button PauseMenuModeOnly" onclick="MainMenu.resumeGame();" >
+											<Image src="file://{images}/play.svg" texturewidth="35" textureheight="35" />
+											<Label text="Return to Game"/>
+										</Button>
+										<Button class="mainmenu__navitem white-hover-button PauseMenuModeOnly" >
+											<Image src="file://{images}/save.svg" texturewidth="35" textureheight="35" />
+											<Label text="Save"/>
+										</Button>
+										<Button class="mainmenu__navitem white-hover-button PauseMenuModeOnly" >
+											<Image src="file://{images}/refresh.svg" texturewidth="35" textureheight="35" />
+											<Label text="Load Save"/>
+										</Button>
+										<Button class="mainmenu__navitem white-hover-button" onactivate="MainMenu.openPage('settings');">
+											<Image src="file://{images}/settings.svg" texturewidth="35" textureheight="35"/>
+											<Label text="Settings"/>
+										</Button>
+										<Button class="mainmenu__navitem white-hover-button PauseMenuModeOnly" onactivate="MainMenu.disconnect();">
+											<Image src="file://{images}/quit.svg" texturewidth="35" textureheight="35"/>
+											<Label text="Quit to Menu"/>
+										</Button>
+										<Button class="mainmenu__navitem white-hover-button MainMenuModeOnly" onactivate="MainMenu.quitGame();">
+											<Image src="file://{images}/quit.svg" texturewidth="35" textureheight="35"/>
+											<Label text="Quit to Desktop"/>
 										</Button>
 									</Panel>
 								</Panel>

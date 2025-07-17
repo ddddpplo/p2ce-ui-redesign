@@ -1,24 +1,38 @@
 'use strict';
 
+class Page {
+	/** @type {Panel} */
+	content;
+	/** @type {string} */
+	name;
+	/** @type {string} */
+	layoutFile;
+}
+
 class MainMenu {
 	static panels = {
 		cp: $.GetContextPanel(),
-		pageContent: $('#PageContent'),
 		homeContent: $('#HomeContent'),
 		contentBlur: $('#MainMenuContentBlur'),
 		backgroundBlur: $('#MainMenuBackgroundBlur'),
 		movie: $<Movie>('#MainMenuMovie'),
 		image: $<Image>('#MainMenuBackground'),
-		topButtons: $('#MainMenuTopButtons'),
-		homeButton: $<RadioButton>('#HomeButton'),
-		addonsButton: $<RadioButton>('#AddonsButton'),
-		navlistFrame: $<Frame>('#MainMenuNavlistFrame')
+		mainMenuNavlist: $<Panel>('#MainMenuNavlist'),
+		pageBlur: $<BaseBlurTarget>('#MainMenuPageBlur'),
+		pagesContainer: $<Panel>('#MainMenuPagesContainer')
 	};
-
-	static activeTab = '';
 	
-	static pageHistory = ['file://{resources}/layout/pages/main-menu/main-menu-navlist.xml'];
-
+	static pages = [
+		/** @type {Page} */
+		{
+			content: null,
+			name: "chapter-select",
+			layoutFile: "file://{resources}/layout/pages/main-menu/chapter-select.xml"
+		}
+	];
+	
+	static currentPage: Page;
+	
 	static {
 		$.RegisterForUnhandledEvent('ShowMainMenu', this.onShowMainMenu.bind(this));
 		$.RegisterForUnhandledEvent('HideMainMenu', this.onHideMainMenu.bind(this));
@@ -36,19 +50,8 @@ class MainMenu {
 	 * General onLoad initialisations.
 	 * Fired when MainMenu fires its onload event.
 	 */
-	static onMainMenuLoaded() {
-		// These aren't accessible until the page has loaded fully, find them now
-		this.panels.movie = $<Movie>('#MainMenuMovie');
-
-		// TEMP: Hide the addons button if the workshop API is not available
-		try {
-			const count = WorkshopAPI.GetAddonCount();
-		} catch (e) {
-			if (this.panels.addonsButton) this.panels.addonsButton.visible = false;
-		}
-
-		if (GameInterfaceAPI.GetSettingBool('developer')) $('#ControlsLibraryButton')?.RemoveClass('hide');
-
+	static onMainMenuLoaded() {	
+		this.panels.movie = $<Movie>('#MainMenuMovie')
 		this.setMainMenuBackground();
 
 		if (GameStateAPI.IsPlaytest()) this.showPlaytestConsentPopup();
@@ -97,28 +100,82 @@ class MainMenu {
 		this.panels.cp.RemoveClass('MainMenuRootPanel--PauseMenuMode');
 
 		// Save to file whenever the settings page gets closed
-		if (this.activeTab === 'Settings') {
+		/*if (this.activeTab === 'Settings') {
 			$.DispatchEvent('SettingsSave');
-		}
+		}*/
 	}
 	
 	
-	static setPage(xmlName: string) {
-		if (this.panels.navlistFrame) {
-			let pageFileName = "file://{resources}/layout/pages/main-menu/" + xmlName + ".xml"
-			this.panels.navlistFrame.SetSource(pageFileName);
-			this.pageHistory.push(pageFileName);
+	static openPage(pageName: string) {
+		let page;
+		for (let i = 0; i < this.pages.length; i++) {
+			if (this.pages[i].name === pageName) {
+				page = this.pages[i];
+			}
 		}
-		$.Msg(this.pageHistory);
+		if (!page) {
+			$.Warning("Unknown page name: '" + pageName + "'");
+			return;
+		}
+		
+		if (page.content === null && this.panels.pagesContainer != null) {
+			const newPanel = $.CreatePanel("Panel", this.panels.pagesContainer, page.name);
+			newPanel.LoadLayout(page.layoutFile, false, false);
+			newPanel.RegisterForReadyEvents(true);
+
+			page.content = newPanel;
+			
+			// dynamically add any blurrects to the pageBlur, you only need to do this once when the page is created
+			let pageBlurPanels = page.content.FindChildrenWithClassTraverse("menu-page__blur-rect");
+			for (let i = 0; i < pageBlurPanels.length; i++) {
+				this.panels.pageBlur?.AddBlurPanel(pageBlurPanels[i]);
+			}
+		}
+		
+		this.panels.mainMenuNavlist?.SetHasClass('menu-page--hidden', true);
+		this.panels.mainMenuNavlist?.SetHasClass('menu-page--shown', false);
+		page.content.SetHasClass('menu-page--hidden', false);
+		page.content.SetHasClass('menu-page--shown', true);
+		
+		// janky solution but removing the transition class and immediately putting it back retriggers the anim
+		// as far as I can tell, this is the right way to do it :P
+		this.panels.pageBlur?.SetHasClass("mainmenu__page-blur--page-transition", false);
+		this.panels.pageBlur?.SetHasClass("mainmenu__page-blur--page-transition", true);
+		
+		this.currentPage = page;
+		this.currentPage.content.SetFocus();
+
+		/*this.currentPage = page;
+		this.updatePageAnimations();
+		
+		this.panels.homeList.AddClass("hidden");
+		this.panels.dlc.AddClass("hidden");
+		this.panels.pagesFooter.RemoveClass("hidden");
+		this.currentPage.parent.RemoveClass("hidden");
+
+		this.clearActionBar();
+
+		$.DispatchEvent("OpenPage", page.name);
+
+		this.panels.logo.AddClass("retract");
+		this.panels.mainMenu.AddClass("mainmenu__parent-pageopen");*/
 	}
 	
 	static onBackButtonPressed() {
-		$.Msg(this.pageHistory);
+		/*$.Msg(this.pageHistory);
 		let previousPage = this.pageHistory[this.pageHistory.length - 1];
 		if (previousPage) {
 			this.panels.navlistFrame?.SetSource(previousPage);
-		}
-		$.Msg(this.pageHistory);
+		}*/
+		//this.panels.pageBlur?.RemoveBlurPanel(this.currentPage.content);
+		this.panels.mainMenuNavlist?.SetHasClass('menu-page--hidden', false);
+		this.panels.mainMenuNavlist?.SetHasClass('menu-page--shown', true);
+		this.currentPage.content.SetHasClass('menu-page--hidden', true);
+		this.currentPage.content.SetHasClass('menu-page--shown', false);
+		// janky solution but removing the transition class and immediately putting it back retriggers the anim
+		this.panels.pageBlur?.SetHasClass("mainmenu__page-blur--page-transition", false);
+		this.panels.pageBlur?.SetHasClass("mainmenu__page-blur--page-transition", true);
+		
 	}
 
 	/**
@@ -192,6 +249,7 @@ class MainMenu {
 		if (GameInterfaceAPI.GetGameUIState() === GameUIState.PAUSEMENU) {
 			this.resumeGame();
 		}
+		this.onBackButtonPressed();
 	}
 	
 	static resumeGame() {
