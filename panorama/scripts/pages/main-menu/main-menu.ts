@@ -42,6 +42,7 @@ class MainMenu {
 		$.RegisterEventHandler('Cancelled', $.GetContextPanel(), this.onEscapeKeyPressed.bind(this));
 		$.RegisterForUnhandledEvent('MapLoaded', this.onBackgroundMapLoaded.bind(this));
 		$.RegisterForUnhandledEvent('MapUnloaded', this.onMapUnloaded.bind(this));
+		$.RegisterForUnhandledEvent('NavigateBack', this.onBackButtonPressed.bind(this));
 
 		$.DispatchEvent('HideIntroMovie');
 	}
@@ -177,6 +178,16 @@ class MainMenu {
 		this.panels.pageBlur?.SetHasClass("mainmenu__page-blur--page-transition", true);
 		
 	}
+	
+	static navigateHome() {
+		this.panels.mainMenuNavlist?.SetHasClass('menu-page--hidden', false);
+		this.panels.mainMenuNavlist?.SetHasClass('menu-page--shown', true);
+		this.currentPage.content.SetHasClass('menu-page--hidden', true);
+		this.currentPage.content.SetHasClass('menu-page--shown', false);
+		// janky solution but removing the transition class and immediately putting it back retriggers the anim
+		this.panels.pageBlur?.SetHasClass("mainmenu__page-blur--page-transition", false);
+		this.panels.pageBlur?.SetHasClass("mainmenu__page-blur--page-transition", true);
+	}
 
 	/**
 	 * Set the video background based on persistent storage settings
@@ -245,7 +256,7 @@ class MainMenu {
 	 * @param {unknown} _focusPanel - Pressing in main menu returns undefined
 	 */
 	static onEscapeKeyPressed(_eSource, _focusPanel) {
-		// Resume game in pause menu mode, OTHERWISE close the active menu menu page
+		// Resume game in pause menu mode
 		if (GameInterfaceAPI.GetGameUIState() === GameUIState.PAUSEMENU) {
 			this.resumeGame();
 		}

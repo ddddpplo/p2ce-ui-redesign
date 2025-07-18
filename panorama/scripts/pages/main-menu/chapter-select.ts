@@ -84,4 +84,8 @@ class ChapterSelect {
 	static playGame() {
 		GameInterfaceAPI.ConsoleCommand('map ' + chapters[this.currentChapter - 1]);
 	}
+	
+	static onBackButtonPressed() {
+		$.DispatchEvent('NavigateBack');
+	}
 }

@@ -50,3 +50,5 @@ $.DefineEvent(
 
 $.DefineEvent('ColorPickerSave', 1, 'color');
 $.DefineEvent('ColorPickerCancel', 0);
+
+$.DefineEvent('NavigateBack', 0, 'Fired when the back button is pressed to navigate back a page');

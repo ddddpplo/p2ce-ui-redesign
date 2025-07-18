@@ -139,7 +139,8 @@ interface GlobalEventNameMap {
 	'MapLoaded':							(mapName: string, isBackgroundMap: boolean) => void,
 	'MapUnloaded':							() => void,
 	'Cancelled':							(sourceID: string, source: PanelEventSource) => void,
-	'PopulateLoadingScreen':				(mapName: string) => void
+	'PopulateLoadingScreen':				(mapName: string) => void,
+	'NavigateBack':							() => void
 }
 
 /** Represents the info object provided by a DragEvent */

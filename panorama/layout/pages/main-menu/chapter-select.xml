@@ -35,7 +35,7 @@
 			
 		</Panel>
 		<Panel class="menu-page__bottom-buttons-container">
-			<Button class="menu-page__bottom-button white-hover-button menu-page__blur-rect" onactivate="">
+			<Button class="menu-page__bottom-button white-hover-button menu-page__blur-rect" onactivate="ChapterSelect.onBackButtonPressed();">
 				<Image src="file://{images}/reset.svg" texturewidth="35" textureheight="35"/>
 				<Label text="Back"/>
 			</Button>
