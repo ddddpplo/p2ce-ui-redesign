@@ -5,7 +5,7 @@ It is intended to be used as a template for mods of p2ce, used with credit to me
 Note that this is still in development, so many things are not yet functional.
 ### Instructions for use
 If you wish to use this in your mod, fork this repository into your mod folder and add the directory to your mod's `SearchPaths` in gameinfo.txt, same as mounting any other mod folder.
-Credit IS required when using this UI template. You can also optionally clone this reposotory, but forking will make it as seamless as possible to update when I add new features.
+Credit IS required when using this UI template. You can also optionally clone this reposotory, but forking will make it as seamless as possible to update when I add new features.\
 \
 To add your own mod's chapters to the menu, navigate to `panorama/scripts/pages/main-menu/chapter-select.ts` and replace the contents of the `chapters` array with your own map names.
 Then find and replace any instance of `#portal2_` with your own mod name so that it reads from the correct language file.\
