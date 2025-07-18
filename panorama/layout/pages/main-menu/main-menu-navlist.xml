@@ -1,4 +1,6 @@
 <root>
+	<!-- NOTE: this file is no longer used, see main-menu.xml -->
+	<!-- I'm not deleting it just yet in case it's useful somehow -->
 	<styles>
 		<include src="file://{resources}/styles/main.scss" />
 	</styles>
@@ -22,7 +24,7 @@
 				<Label text="Community Chambers"/>
 			</Button>
 			
-			<Button class="mainmenu__navitem white-hover-button PauseMenuModeOnly" onclick="MainMenu.resumeGame();" >
+			<Button class="mainmenu__navitem white-hover-button PauseMenuModeOnly" onactivate="MainMenu.resumeGame();" >
 				<Image src="file://{images}/play.svg" texturewidth="35" textureheight="35" />
 				<Label text="Return to Game"/>
 			</Button>

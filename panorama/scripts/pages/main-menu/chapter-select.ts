@@ -24,7 +24,7 @@ class ChapterSelect {
 	
 	// currentChapter is the chapter number it shows in game, NOT starting at 0
 	static currentChapter: int8 = 1;
-	static chapterButtons: GenericPanel[];
+	static chapterButtons: GenericPanel[] = [];
 	
 	static clickChapterButton(chapterNum: int8) {
 		if (!this.chapterButtons || this.chapterButtons[chapterNum - 1].HasClass("chapterselect__chapter-button--selected")) {
@@ -50,8 +50,7 @@ class ChapterSelect {
 	}
 	
 	static capitalizeTitle(str) {
-		str = str.toLowerCase();
-		str = str.split(" ");
+		str = str.toLowerCase().split(" ");
 
 		for (var i = 0, x = str.length; i < x; i++) {
 			str[i] = str[i][0].toUpperCase() + str[i].substr(1);
@@ -60,17 +59,21 @@ class ChapterSelect {
 	}
 	
 	static onLoaded() {
-		let chapterListChildren = this.panels.chapterList?.Children();
-		if (chapterListChildren) {
-			this.chapterButtons = chapterListChildren;
+		if (!this.panels.chapterList) {
+			return;
 		}
-		for (let i = 0; i < this.chapterButtons.length; i++) {
-			// these should all be TextButtons so the first child is always a label
-			let chapterButtonLabel = this.chapterButtons[i].GetFirstChild<Label>();
+		for (let i = 0; i < chapters.length; i++) {
+			const chapterButton = $.CreatePanel("TextButton", this.panels.chapterList, "ChapterButton" + (i + 1));
+			chapterButton.AddClass("chapterselect__chapter-button");
+			chapterButton.AddClass("grey-hover-button");
+			chapterButton.SetPanelEvent('onactivate', () => this.clickChapterButton(i + 1));
+			
+			let chapterButtonLabel = chapterButton.GetFirstChild<Label>();
 			if (chapterButtonLabel) {
 				chapterButtonLabel.SetLocalizationString("#portal2_Chapter" + (i + 1) + "_Subtitle");
 				chapterButtonLabel.text = this.capitalizeTitle(chapterButtonLabel.text);
 			}
+			this.chapterButtons.push(chapterButton);
 		}
 		
 		if (this.chapterButtons.length > 0) {

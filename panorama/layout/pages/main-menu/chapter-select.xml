@@ -17,18 +17,8 @@
 					<Panel class="chapterselect__chapter-list-scroll-shadow__top"/>
 					<Panel class="chapterselect__chapter-list-scroll-shadow__bottom"/>
 					<Panel class="chapterselect__chapter-list" id="ChapterList" onload="ChapterSelect.onLoaded();">
-						<!-- Chapter buttons -->
-						<!-- Make sure there are the same number of buttons as there are chapters -->
-						<TextButton class="chapterselect__chapter-button grey-hover-button" onactivate="ChapterSelect.clickChapterButton(1);"/>
-						<TextButton class="chapterselect__chapter-button grey-hover-button" onactivate="ChapterSelect.clickChapterButton(2);"/>
-						<TextButton class="chapterselect__chapter-button grey-hover-button" onactivate="ChapterSelect.clickChapterButton(3);"/>
-						<TextButton class="chapterselect__chapter-button grey-hover-button" onactivate="ChapterSelect.clickChapterButton(4);"/>
-						<TextButton class="chapterselect__chapter-button grey-hover-button" onactivate="ChapterSelect.clickChapterButton(5);"/>
-						<TextButton class="chapterselect__chapter-button grey-hover-button" onactivate="ChapterSelect.clickChapterButton(6);"/>
-						<TextButton class="chapterselect__chapter-button grey-hover-button" onactivate="ChapterSelect.clickChapterButton(7);"/>
-						<TextButton class="chapterselect__chapter-button grey-hover-button" onactivate="ChapterSelect.clickChapterButton(8);"/>
-						<TextButton class="chapterselect__chapter-button grey-hover-button" onactivate="ChapterSelect.clickChapterButton(9);"/>
-						<TextButton class="chapterselect__chapter-button grey-hover-button" onactivate="ChapterSelect.clickChapterButton(10);"/>
+						<!-- Chapter buttons get inserted here dynamically -->
+						<!-- To add chapters, add map names to the 'chapters' array in chapter-select.ts and add titles to the language file -->
 					</Panel>
 				</Panel>
 				
