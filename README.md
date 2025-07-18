@@ -4,7 +4,7 @@ This repository contains a UI redesign for Portal 2 Community Edition, made with
 It is intended to be used as a template for mods of p2ce, used with credit to me, MostlyDaniel.
 Note that this is still in development, so many things are not yet functional.\
 \
-Credit IS required when using this UI template. A copy of the `LICENSE` file found in this repository must me included in your mod,
+Credit IS required when using this UI template. A copy of the `LICENSE` file found in this repository must be included in your mod,
 and preferably I'd also be listed in your mod's credits.
 ### Instructions for use
 If you wish to use this in your mod, fork this repository into your mod folder and add the directory to your mod's `SearchPaths` in gameinfo.txt, same as mounting any other mod folder.
