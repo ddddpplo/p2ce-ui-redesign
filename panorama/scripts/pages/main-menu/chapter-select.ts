@@ -24,7 +24,7 @@ class ChapterSelect {
 	
 	// currentChapter is the chapter number it shows in game, NOT starting at 0
 	static currentChapter: int8 = 1;
-	static chapterButtons: GenericPanel[] = [];
+	static chapterButtons: TextButton[] = [];
 	
 	static clickChapterButton(chapterNum: int8) {
 		if (!this.chapterButtons || this.chapterButtons[chapterNum - 1].HasClass("chapterselect__chapter-button--selected")) {
@@ -83,9 +83,6 @@ class ChapterSelect {
 	
 	static playGame() {
 		GameInterfaceAPI.ConsoleCommand('map ' + chapters[this.currentChapter - 1]);
-	}
-	
-	static onBackButtonPressed() {
-		$.DispatchEvent('NavigateBack');
+		$.DispatchEvent('NavigateHome');
 	}
 }

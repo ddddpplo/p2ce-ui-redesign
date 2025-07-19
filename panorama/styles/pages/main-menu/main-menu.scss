@@ -200,108 +200,6 @@ $drawer-width: 768px;
 	}
 }
 
-.chapterselect {
-	flow-children:down;
-	width:1180px;
-	
-	&__body {
-		flow-children:down;
-		background-color: #16161690;
-	}
-	
-	&__chapters-thumbnails-container {
-		flow-children:right;
-		width:1180px;
-	}
-	
-	&__chapter-list-container {
-		width:590px;
-		height:400px;
-	}
-	
-	&__chapter-list {
-		width:100%;
-		flow-children:down;
-		overflow:scroll;
-	}
-	
-	&__chapter-list-scroll-shadow {
-		&__top {
-			vertical-align: top;
-			height:20px;
-			background-color: gradient( linear, 0% 0%, 0% 100%, from( #111b ), to( transparent ) );
-			width:100%;
-		}
-		
-		&__bottom {
-			vertical-align: bottom;
-			height:20px;
-			background-color: gradient( linear, 0% 0%, 0% 100%, from( transparent ), to( #111b ) );
-			width:100%;
-		}
-	}
-	
-	&__preview-container {
-		width:590px;
-		height:100%;
-		background-color: #222b;
-	}
-	
-	&__preview-alignment {
-		flow-children:down;
-		horizontal-align:middle;
-		height:100%;
-		width:550px;
-	}
-	
-	&__thumbnail {
-		margin-top:16px;
-		width:550px;
-		height:309px;
-	}
-	
-	&__chaptertitle-container {
-		width:590px;
-		margin-bottom:20px;
-		vertical-align:bottom;
-		flow-children:right;
-	}
-	
-	&__chapter-number-title {
-		font-size:25px;
-		font-weight:normal;
-	}
-	
-	&__chapter-title {
-		font-size:25px;
-		font-weight:bold;
-	}
-	
-	&__chapter-button {
-		background-color: transparent;
-		height:72px;
-		width:580px;
-		flow-children:right;
-		> Label {
-			color: white;
-			text-shadow:none;
-			vertical-align: middle;
-			font-size:25px;
-			font-weight:bold;
-			transform: translateX(0px);
-			transition: transform 0.15s ease-in-out 0.0s, color 0.15s ease-in-out 0.0s;
-			margin-left:25px;
-		}
-		&--selected {
-			background-color:white;
-			> Label {
-				color:#222;
-				transform:translateX(12px);
-			}
-		}
-	}
-}
-
 .home {
 	&__wrapper {
 		width: 100%;
@@ -483,4 +381,18 @@ $drawer-width: 768px;
 			margin:0 20px;
 		}
 	}
+}
+
+.scroll-shadow-top {
+	vertical-align: top;
+	height:20px;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #111b ), to( transparent ) );
+	width:100%;
+}
+
+.scroll-shadow-bottom {
+	vertical-align: bottom;
+	height:20px;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( transparent ), to( #111b ) );
+	width:100%;
 }

@@ -68,7 +68,7 @@
 								
 								<Panel id="MainMenuPagesContainer" class="mainmenu__pages-container">
 									<Panel id="MainMenuNavlist" class="mainmenu__navlist menu-page menu-page--shown menu-page__blur-rect">
-										<Button class="mainmenu__navitem white-hover-button MainMenuModeOnly" onactivate="MainMenu.openPage('chapter-select');">
+										<Button class="mainmenu__navitem white-hover-button MainMenuModeOnly" onactivate="$.DispatchEvent('OpenPage', 'chapter-select');">
 											<Image src="file://{images}/play.svg" texturewidth="35" textureheight="35" />
 											<Label text="Singleplayer"/>
 										</Button>
@@ -93,7 +93,7 @@
 											<Image src="file://{images}/refresh.svg" texturewidth="35" textureheight="35" />
 											<Label text="Load Save"/>
 										</Button>
-										<Button class="mainmenu__navitem white-hover-button" onactivate="MainMenu.openPage('settings');">
+										<Button class="mainmenu__navitem white-hover-button" onactivate="$.DispatchEvent('OpenPage', 'settings');">
 											<Image src="file://{images}/settings.svg" texturewidth="35" textureheight="35"/>
 											<Label text="Settings"/>
 										</Button>

@@ -140,7 +140,9 @@ interface GlobalEventNameMap {
 	'MapUnloaded':							() => void,
 	'Cancelled':							(sourceID: string, source: PanelEventSource) => void,
 	'PopulateLoadingScreen':				(mapName: string) => void,
-	'NavigateBack':							() => void
+	'NavigateBack':							() => void,
+	'NavigateHome':							() => void,
+	'OpenPage':								(pageName: string) => void
 }
 
 /** Represents the info object provided by a DragEvent */

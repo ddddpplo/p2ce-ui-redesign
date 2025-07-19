@@ -52,3 +52,5 @@ $.DefineEvent('ColorPickerSave', 1, 'color');
 $.DefineEvent('ColorPickerCancel', 0);
 
 $.DefineEvent('NavigateBack', 0, 'Fired when the back button is pressed to navigate back a page');
+$.DefineEvent('NavigateHome', 0, 'Returns to the home page');
+$.DefineEvent('OpenPage', 1, 'pageName', 'Opens a menu page');
