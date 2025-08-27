@@ -1,0 +1,11 @@
+@use '../../config' as *;
+@use '../../abstract/function';
+@use '../../abstract/mixin';
+
+.singleplayer-menu {
+	&__body {
+		background-color: #16161690;
+		width:590px;
+		flow-children:down;
+	}
+}

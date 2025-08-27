@@ -6,8 +6,6 @@
 		<include src="file://{scripts}/pages/main-menu/settings.ts" />
 	</scripts>
 	<Panel class="settings__contents">
-		<Panel class="scroll-shadow-top"/>
-		<Panel class="scroll-shadow-bottom"/>
-        <Label text="Video"/>
+		
 	</Panel>
 </root>

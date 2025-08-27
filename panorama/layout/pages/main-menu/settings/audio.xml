@@ -6,8 +6,68 @@
 		<include src="file://{scripts}/pages/main-menu/settings.ts" />
 	</scripts>
 	<Panel class="settings__contents">
-		<Panel class="scroll-shadow-top"/>
-		<Panel class="scroll-shadow-bottom"/>
-        <Label text="Audio"/>
+		<Label text="Volume Controls" class="settings__section-header" />
+		
+		<SettingsSlider class="settings__setting-item--slider grey-hover-button" 
+			min="0" max="1" increment="0.01" 
+			percentage="true"
+			showdefault="false" 
+			convar="volume"
+			text="Game Volume" />
+		<SettingsSlider class="settings__setting-item--slider grey-hover-button" 
+			min="0" max="1" increment="0.01"
+			percentage="true" 
+			showdefault="false" 
+			convar="snd_volume_music"
+			text="Music Volume" />
+		<SettingsSlider class="settings__setting-item--slider grey-hover-button"
+			min="0" max="1" increment="0.01"
+			percentage="true"
+			showdefault="false"
+			convar="snd_volume_ambient"
+			text="Ambient Volume" />
+		<SettingsSlider class="settings__setting-item--slider grey-hover-button"
+			min="0" max="1" increment="0.01"
+			percentage="true"
+			showdefault="false"
+			convar="snd_volume_ui"
+			text="UI Volume" />
+		<SettingsSlider class="settings__setting-item--slider grey-hover-button"
+			min="0" max="1" increment="0.01"
+			percentage="true"
+			showdefault="false"
+			convar="snd_volume_physics"
+			text="Physics Volume"/>
+		<SettingsSlider class="settings__setting-item--slider grey-hover-button"
+			min="0" max="1" increment="0.01"
+			percentage="true"
+			showdefault="false"
+			convar="snd_volume_footsteps"
+			text="Footsteps Volume" />
+			
+		<Panel class="settings__horizontal-line" />
+		<Label text="Closed Captions" class="settings__section-header" />
+		
+		<SettingsEnumDropDown class="settings__setting-item--dropdown grey-hover-button" convar="closecaption" text="Enable Captions">
+			<Label text="Enabled" value="1" id="captions-enable1"/>
+			<Label text="Disabled" value="0" id="captions-enable0"/>
+		</SettingsEnumDropDown>
+		<SettingsEnumDropDown class="settings__setting-item--dropdown grey-hover-button" convar="cc_subtitle" text="Caption Style">
+			<Label text="Dialog Only" value="1" id="captions-style1"/>
+			<Label text="Everything" value="0" id="captions-style0"/>
+		</SettingsEnumDropDown>
+		
+		<Panel class="settings__horizontal-line" />
+		<Label text="Device Configuration" class="settings__section-header" />
+		
+		<SettingsEnumDropDown class="settings__setting-item--dropdown grey-hover-button" convar="snd_surround_speakers" text="Speaker Configuration">
+			<Label text="#Settings_Audio_SpeakerConfig_Headphones" id="speakerconfig1" value="0"/>
+			<Label text="#Settings_Audio_SpeakerConfig_Speakers_2" id="speakerconfig2" value="2"/>
+			<Label text="#Settings_Audio_SpeakerConfig_Speakers_4" id="speakerconfig3" value="4"/>
+			<Label text="#Settings_Audio_SpeakerConfig_Speakers_51" id="speakerconfig4" value="5"/>
+		</SettingsEnumDropDown>
+		
+		<SettingsEnumDropDown class="settings__setting-item--dropdown grey-hover-button" convar="" text="Output Device">
+		</SettingsEnumDropDown>
 	</Panel>
 </root>

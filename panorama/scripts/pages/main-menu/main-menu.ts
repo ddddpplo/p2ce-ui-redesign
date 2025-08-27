@@ -40,6 +40,7 @@ class MainMenu {
 	
 	static pages = {
 		'navlist': 			new Page(this.panels.mainMenuNavlist, "navlist", ""),
+		'singleplayer': 	new Page(null, "singleplayer", "file://{resources}/layout/pages/main-menu/singleplayer.xml"),
 		'chapter-select': 	new Page(null, "chapter-select", "file://{resources}/layout/pages/main-menu/chapter-select.xml"),
 		'settings': 		new Page(null, "settings", "file://{resources}/layout/pages/main-menu/settings.xml")
 	};
@@ -146,7 +147,7 @@ class MainMenu {
 		
 		//this.panels.mainMenuNavlist?.SetHasClass('menu-page--hidden', true);
 		//this.panels.mainMenuNavlist?.SetHasClass('menu-page--shown', false);
-		this.pages.navlist.hide();
+		this.currentPage.hide();
 		page.show();
 		this.triggerBlurAnim();
 		

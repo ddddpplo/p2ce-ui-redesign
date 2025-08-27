@@ -16,20 +16,26 @@
 				<!-- tabs are inserted here dynamically from the 'pages' dictionary in settings.ts -->
 				<Panel id="SettingsCategoriesContainer" class="settings__categories-container" />
 				
-				<!-- stuff also gets inserted here dynamically based on which settings tab is clicked -->
-				<Panel id="SettingsContentsContainer" class="settings__contents-container" />
+				<Panel class="settings__scroll-container">
+					<Panel class="scroll-shadow-top"/>
+					<Panel class="scroll-shadow-bottom"/>
+					
+					<!-- stuff also gets inserted here dynamically based on which settings tab is clicked -->
+					<Panel id="SettingsContentsContainer" class="settings__contents-container" />
+				</Panel>
 			</Panel>
 			
 		</Panel>
 		<Panel class="menu-page__bottom-buttons-container">
+			<!-- Eventually I'd like to have a cancel and done button in case you don't want to immediately apply settings, but I'm not sure how yet. -->
 			<Button class="menu-page__bottom-button white-hover-button menu-page__blur-rect" onactivate="$.DispatchEvent('NavigateBack');">
 				<Image src="file://{images}/reset.svg" texturewidth="35" textureheight="35" />
-				<Label text="Cancel" />
+				<Label text="Back" />
 			</Button>
-			<Button class="menu-page__bottom-button white-hover-button menu-page__blur-rect" onactivate="$.DispatchEvent('NavigateBack');">
+			<!--Button class="menu-page__bottom-button white-hover-button menu-page__blur-rect" onactivate="$.DispatchEvent('NavigateBack');">
 				<Image src="file://{images}/checkmark.svg" texturewidth="35" textureheight="35" />
 				<Label text="Done" />
-			</Button>
+			</Button-->
 		</Panel>
 	</Panel>
 </root>

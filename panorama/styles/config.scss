@@ -41,7 +41,7 @@ $base-950: #181818 !default;
 // COLORS
 //===========================
 
-$blue: #1896d3 !default;
+$blue: #26a8db !default;
 $mid-blue: #57c8ff !default;
 $light-blue: #71f0ff !default;
 $purple: #be71ff !default;
@@ -344,28 +344,20 @@ $dropdown-button-background-menuvisible: gradient-vertical(
 	color.scale($button-background-base, $lightness: -65%, $alpha: 50%)
 ) !default;
 
-$dropdown-button-icon-background: $light-300 !default;
-$dropdown-button-icon-background-hover: color.scale(
-	$dropdown-button-icon-background,
-	$lightness: 0%,
-	$alpha: 12%
-) !default;
-$dropdown-button-icon-background-menuvisible: color.scale(
-	$dropdown-button-icon-background,
-	$lightness: -40%,
-	$alpha: 20%
-) !default;
+$dropdown-button-icon-background: transparent !default;
+$dropdown-button-icon-background-hover: transparent !default;
+$dropdown-button-icon-background-menuvisible: transparent !default;
 $dropdown-button-icon-border: 0px solid rgba(0, 0, 0, 0) !default;
-$dropdown-button-icon-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.3) !default;
-$dropdown-button-icon-icon-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5) !default;
+$dropdown-button-icon-shadow: none !default;
+$dropdown-button-icon-icon-shadow: none !default;
 
 $dropdown-button-shadow: $button-shadow !default;
-$dropdown-button-radius: 2px !default;
+$dropdown-button-radius: 4px !default;
 $dropdown-button-border: $button-border !default;
 
 $dropdown-button-use-header-font: true !default;
 $dropdown-button-font-size: 21px !default;
-$dropdown-button-height: 34px !default;
+$dropdown-button-height: 36px !default;
 $dropdown-button-color: $font-default-color !default;
 $dropdown-button-color-disabled: $font-disabled-color !default;
 $dropdown-button-text-shadow: $button-text-shadow;
@@ -373,17 +365,17 @@ $dropdown-button-text-shadow: $button-text-shadow;
 $dropdown-button-padding: 4px 12px !default;
 $dropdown-button-icon-width: 24px !default;
 
-$dropdown-menu-background: $gray-400 !default;
+$dropdown-menu-background: #222e !default;
 $dropdown-menu-padding-y: 8px !default;
 $dropdown-menu-shadow: fill rgba(0, 0, 0, 0.9) 0px 3px 6px 0px !default;
-$dropdown-menu-border: 1px solid rgba(0, 0, 0, 0.9) !default;
+$dropdown-menu-border: 0px solid rgba(0, 0, 0, 0.9) !default;
 $dropdown-menu-radius: 4px !default;
 
 $dropdown-item-use-header-font: true !default;
 $dropdown-item-font-size: 20px !default;
 $dropdown-item-padding: 4px 16px 4px 16px !default;
 $dropdown-item-background: rgba(0, 0, 0, 0) !default;
-$dropdown-item-background-hover: $light-400 !default;
+$dropdown-item-background-hover: #fff1 !default;
 
 // ================
 // CONTEXTMENU
@@ -491,7 +483,7 @@ $textentry-height: 32px !default;
 $textentry-width: 256px !default;
 $textentry-padding: 6px 16px 6px 8px !default;
 $textentry-border: 0 solid none !default;
-$textentry-radius: 4px !default;
+$textentry-radius: 6px !default;
 $textentry-shadow: fill rgba(0, 0, 0, 0.3) 0px 0px 3px 0px !default;
 $textentry-shadow-hover: fill rgba(0, 0, 0, 0.5) 0px 0px 3px 0px !default;
 
@@ -510,15 +502,15 @@ $slider-padding-height: 8px !default;
 $slider-track-height: 8px !default;
 
 $slider-track: $gray-900 !default;
-$slider-track-shadow: rgba(0, 0, 0, 0.2) 0px 0px 8px 0px !default;
-$slider-track-progress-horizontal: $orange !default;
-$slider-track-progress-vertical: $orange !default;
+$slider-track-shadow: rgba(0, 0, 0, 0.6) 0px 0px 16px 0px !default;
+$slider-track-progress-horizontal: $blue !default;
+$slider-track-progress-vertical: $blue !default;
 
 $slider-thumb-color: $white !default;
 $slider-thumb-color-hover: color.scale($slider-thumb-color, $lightness: -15%) !default;
-$slider-thumb-width: 16px !default;
-$slider-thumb-height: 16px !default;
-$slider-thumb-radius: 4px !default;
+$slider-thumb-width: 18px !default;
+$slider-thumb-height: 18px !default;
+$slider-thumb-radius: 8px !default;
 $slider-thumb-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px 0px !default;
 
 $slider-default-color: $gray-600 !default;
@@ -536,7 +528,7 @@ $scrollbar-radius: 5px !default;
 $scrollbar-color: $white !default;
 $scrollbar-opacity: 0.8 !default;
 $scrollbar-hover-opacity: 1 !default;
-$scrollbar-background-color: #0005 !default;
+$scrollbar-background-color: #1116 !default;
 
 // ================
 // PROGRESSBAR

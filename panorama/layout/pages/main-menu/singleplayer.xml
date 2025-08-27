@@ -1,0 +1,34 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/main.scss" />
+	</styles>
+	<scripts>
+		<!--include src="file://{scripts}/pages/main-menu/chapter-select.ts" /-->
+	</scripts>
+	<Panel class="singleplayer-menu menu-page">
+		<Panel class="singleplayer-menu__body menu-page__blur-rect" hittest="true">
+			<Panel class="mainmenu__navitem-title">
+				<Label text="Singleplayer"/>
+			</Panel>
+			
+			<Button class="mainmenu__navitem white-hover-button" onactivate="">
+				<Image src="file://{images}/play.svg" texturewidth="35" textureheight="35" />
+				<Label text="Continue Game"/>
+			</Button>
+			<Button class="mainmenu__navitem white-hover-button" onactivate="$.DispatchEvent('OpenPage', 'chapter-select');">
+				<Image src="file://{images}/add.svg" texturewidth="35" textureheight="35" />
+				<Label text="Start New Game"/>
+			</Button>
+			<Button class="mainmenu__navitem white-hover-button" onactivate="$.DispatchEvent('OpenPage', 'saves');">
+				<Image src="file://{images}/save.svg" texturewidth="35" textureheight="35" />
+				<Label text="Load Save"/>
+			</Button>
+		</Panel>
+		<Panel class="menu-page__bottom-buttons-container">
+			<Button class="menu-page__bottom-button white-hover-button menu-page__blur-rect" onactivate="$.DispatchEvent('NavigateBack');">
+				<Image src="file://{images}/reset.svg" texturewidth="35" textureheight="35"/>
+				<Label text="Back"/>
+			</Button>
+		</Panel>
+	</Panel>
+</root>
