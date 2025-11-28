@@ -70,6 +70,6 @@
 		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Console" bind="toggleconsole" tags="console" />
 		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Screenshot" bind="jpeg" tags="screenshot" />
 		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_QuickSave" bind="save quick" />
-		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_QuickSave" bind="load quick" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_QuickLoad" bind="load quick" />
 	</Panel>
 </root>
