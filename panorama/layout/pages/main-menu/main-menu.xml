@@ -70,40 +70,40 @@
 									<Panel id="MainMenuNavlist" class="mainmenu__navlist menu-page menu-page--shown menu-page__blur-rect">
 										<Button class="mainmenu__navitem white-hover-button MainMenuModeOnly" onactivate="$.DispatchEvent('OpenPage', 'singleplayer');">
 											<Image src="file://{images}/play.svg" texturewidth="35" textureheight="35" />
-											<Label text="Singleplayer"/>
+											<Label text="#MainMenu_Singleplayer"/>
 										</Button>
 										<Button class="mainmenu__navitem white-hover-button MainMenuModeOnly" >
 											<Image src="file://{images}/coop.svg" texturewidth="35" textureheight="35" />
-											<Label text="Cooperative"/>
+											<Label text="#MainMenu_Coop"/>
 										</Button>
 
 										<Button class="mainmenu__navitem white-hover-button MainMenuModeOnly" >
 											<Image src="file://{images}/lobby.svg" texturewidth="35" textureheight="35" />
-											<Label text="Community Chambers"/>
+											<Label text="#MainMenu_Community"/>
 										</Button>
 										<Button class="mainmenu__navitem white-hover-button PauseMenuModeOnly" onactivate="MainMenu.resumeGame();" >
 											<Image src="file://{images}/play.svg" texturewidth="35" textureheight="35" />
-											<Label text="Return to Game"/>
+											<Label text="#MainMenu_Resume"/>
 										</Button>
 										<Button class="mainmenu__navitem white-hover-button PauseMenuModeOnly" >
 											<Image src="file://{images}/save.svg" texturewidth="35" textureheight="35" />
-											<Label text="Save"/>
+											<Label text="#MainMenu_Save"/>
 										</Button>
 										<Button class="mainmenu__navitem white-hover-button PauseMenuModeOnly" >
 											<Image src="file://{images}/refresh.svg" texturewidth="35" textureheight="35" />
-											<Label text="Load Save"/>
+											<Label text="#MainMenu_Load"/>
 										</Button>
 										<Button class="mainmenu__navitem white-hover-button" onactivate="$.DispatchEvent('OpenPage', 'settings');">
 											<Image src="file://{images}/settings.svg" texturewidth="35" textureheight="35"/>
-											<Label text="Settings"/>
+											<Label text="#MainMenu_Settings"/>
 										</Button>
 										<Button class="mainmenu__navitem white-hover-button PauseMenuModeOnly" onactivate="MainMenu.disconnect();">
 											<Image src="file://{images}/quit.svg" texturewidth="35" textureheight="35"/>
-											<Label text="Quit to Menu"/>
+											<Label text="#MainMenu_Disconnect"/>
 										</Button>
 										<Button class="mainmenu__navitem white-hover-button MainMenuModeOnly" onactivate="MainMenu.quitGame();">
 											<Image src="file://{images}/quit.svg" texturewidth="35" textureheight="35"/>
-											<Label text="Quit to Desktop"/>
+											<Label text="#MainMenu_Quit"/>
 										</Button>
 									</Panel>
 								</Panel>

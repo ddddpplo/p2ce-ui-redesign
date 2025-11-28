@@ -9,7 +9,7 @@
 		<Panel class="chapterselect__body menu-page__blur-rect" hittest="true">
 			
 			<Panel class="mainmenu__navitem-title">
-				<Label text="Start New Game"/>
+				<Label text="#ChapterSelect_NewGame"/>
 			</Panel>
 			
 			<Panel class="chapterselect__chapters-thumbnails-container">
@@ -37,11 +37,11 @@
 		<Panel class="menu-page__bottom-buttons-container">
 			<Button class="menu-page__bottom-button white-hover-button menu-page__blur-rect" onactivate="$.DispatchEvent('NavigateBack');">
 				<Image src="file://{images}/reset.svg" texturewidth="35" textureheight="35"/>
-				<Label text="Back"/>
+				<Label text="#Menu_Generic_Back"/>
 			</Button>
 			<Button class="menu-page__bottom-button white-hover-button menu-page__blur-rect" onactivate="ChapterSelect.playGame();">
 				<Image src="file://{images}/play.svg" texturewidth="35" textureheight="35"/>
-				<Label text="Play"/>
+				<Label text="#ChapterSelect_Play"/>
 			</Button>
 		</Panel>
 	</Panel>

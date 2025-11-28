@@ -31,11 +31,11 @@ class Settings {
 	};
     
     static pages = [
-		new SettingsPage(null, "Video", "file://{resources}/layout/pages/main-menu/settings/video.xml"),
-        new SettingsPage(null, "Audio", "file://{resources}/layout/pages/main-menu/settings/audio.xml"),
-        new SettingsPage(null, "Controls", "file://{resources}/layout/pages/main-menu/settings/controls.xml"),
-        new SettingsPage(null, "Interface", "file://{resources}/layout/pages/main-menu/settings/interface.xml"),
-        new SettingsPage(null, "Customization", "file://{resources}/layout/pages/main-menu/settings/customization.xml")
+		new SettingsPage(null, "#Settings_Page_Video", "file://{resources}/layout/pages/main-menu/settings/video.xml"),
+        new SettingsPage(null, "#Settings_Page_Audio", "file://{resources}/layout/pages/main-menu/settings/audio.xml"),
+        new SettingsPage(null, "#Settings_Page_Controls", "file://{resources}/layout/pages/main-menu/settings/controls.xml"),
+        new SettingsPage(null, "#Settings_Page_Interface", "file://{resources}/layout/pages/main-menu/settings/interface.xml"),
+        new SettingsPage(null, "#Settings_Page_Customization", "file://{resources}/layout/pages/main-menu/settings/customization.xml")
 	];
     
     static categoryButtons: TextButton[] = [];
@@ -85,7 +85,7 @@ class Settings {
 			
 			let buttonLabel = categoryButton.GetFirstChild<Label>();
 			if (buttonLabel) {
-				buttonLabel.text = this.pages[i].name; // [TODO] add to lang file
+				buttonLabel.SetLocalizationString(this.pages[i].name);
 			}
 			this.categoryButtons.push(categoryButton);
 		}

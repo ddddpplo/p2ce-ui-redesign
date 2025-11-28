@@ -6,6 +6,70 @@
 		<include src="file://{scripts}/pages/main-menu/settings.ts" />
 	</scripts>
 	<Panel class="settings__contents">
+		<Label text="#Settings_Controls_MouseHeader" class="settings__section-header" />
 		
+		<SettingsSlider class="grey-hover-button" 
+			min="0.1" max="10" increment="0.01" 
+			percentage="false"
+			showdefault="false" 
+			displayprecision="2"
+			convar="sensitivity"
+			text="#Settings_Controls_Sensitivity" />
+			
+		<SettingsEnumDropDown class="grey-hover-button" convar="m_pitch_inverse" text="#Settings_Controls_PitchInverse">
+			<Label text="#Settings_Generic_Enabled" value="1" id="pitch-inverse1"/>
+			<Label text="#Settings_Generic_Disabled" value="0" id="pitch-inverse0"/>
+		</SettingsEnumDropDown>
+		
+		<Panel class="settings__horizontal-line" />
+		
+		<Label text="#Settings_Controls_KeysHeader" class="settings__section-header" />
+		<Label class="settings__section-header2" text="#Settings_Keybinds_Movement" />
+		
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Move_Forward" bind="+forward" tags="forward" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Move_Back" bind="+back" tags="backwards" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Move_Left" bind="+moveleft" tags="left,strafe" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Move_Right" bind="+moveright" tags="right,strafe" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Turn_Right" bind="+right" tags="right,turnbind" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Turn_Left" bind="+left" tags="left,turnbind" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Jump" bind="+jump" tags="jump" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Toggle_Jump" bind="toggle_jump" tags="toggle,jump" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Duck" bind="+duck" tags="duck,crouch" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Toggle_Duck" bind="toggle_duck" tags="toggle,duck,crouch" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Sprint" bind="+speed" tags="sprint,run,speed" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Toggle_Sprint" bind="toggle_speed" tags="toggle,sprint,run,speed" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Walk" bind="+walk" tags="walk" />
+		
+		<Label class="settings__section-header2" text="#Settings_Keybinds_Interaction" />
+
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Attack_Primary" bind="+attack" tags="attack,primary,fire" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Attack_Secondary" bind="+attack2" tags="attack,secondary,fire" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Use_Items" bind="+use" tags="use,interact" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Flashlight" bind="impulse 100" tags="flashlight" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Weapon_Category_1" bind="slot1" tags="slot1" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Weapon_Category_2" bind="slot2" tags="slot2" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Weapon_Category_3" bind="slot3" tags="slot3" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Weapon_Category_4" bind="slot4" tags="slot4" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Weapon_Category_5" bind="slot5" tags="slot5" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Weapon_Category_6" bind="slot6" tags="slot6" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_ZoomIn" bind="+zoom_in"/>
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_ZoomOut" bind="+zoom_out"/>
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_ZoomToggle" bind="+zoom"/>
+		
+		<Label class="settings__section-header2" text="#Settings_Keybinds_MP_COOP" />
+
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Chat_Message" bind="say" tags="coop,chat,talk" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Chat_Message_TeamOnly" bind="say_team" tags="coop,chat,talk" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Chat_Voice" bind="+voicerecord" tags="coop,voice,chat,push,talk" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Coop_RemoteView" infomessage="Keybind_Coop_RemoteView_Info" bind="+remote_view" tags="coop,remote,view" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Coop_PingTool" infomessage="Keybind_Coop_PingTool_Info" bind="+mouse_menu" tags="coop,ping,tool,radial"/>
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Coop_Taunt" infomessage="Keybind_Coop_Taunt_Info" bind="+mouse_menu_taunt" tags="coop,gesture,taunt"/>
+
+		<Label class="settings__section-header2" text="#Settings_Input_Keybinds_Misc" />
+
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Console" bind="toggleconsole" tags="console" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_Screenshot" bind="jpeg" tags="screenshot" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_QuickSave" bind="save quick" />
+		<SettingsKeyBinder class="grey-hover-button" text="#Keybind_QuickSave" bind="load quick" />
 	</Panel>
 </root>

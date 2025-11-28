@@ -42,7 +42,8 @@ class ChapterSelect {
 			this.panels.chapterTitle.text = this.capitalizeTitle(this.panels.chapterTitle.text);
 		}
 		if (this.panels.chapterNumberTitle) {
-			this.panels.chapterNumberTitle.text = "Chapter " + chapterNum + " • ";
+			this.panels.chapterNumberTitle.SetLocalizationString("#portal2_Chapter" + chapterNum + "_Title");
+			this.panels.chapterNumberTitle.text = this.capitalizeTitle(this.panels.chapterNumberTitle.text) + " • ";
 		}
 		if (this.panels.chapterThumbnail) {
 			this.panels.chapterThumbnail.SetImage("file://{images}/menu/chapter_thumbnails/chapter" + chapterNum + ".png");
