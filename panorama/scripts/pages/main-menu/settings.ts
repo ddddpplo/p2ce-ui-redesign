@@ -90,6 +90,11 @@ class Settings {
 			this.categoryButtons.push(categoryButton);
 		}
 		
-		this.openPage(0); // [TODO] might also be better to not hard code this later
+		this.openPage(0); // might also be better to not hard code this later
+		// just kidding I don't see a problem with this
     }
+	
+	static populateAudioDeviceEnum() {
+		
+	}
 }

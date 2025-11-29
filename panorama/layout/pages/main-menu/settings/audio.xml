@@ -6,68 +6,84 @@
 		<include src="file://{scripts}/pages/main-menu/settings.ts" />
 	</scripts>
 	<Panel class="settings__contents">
-		<Label text="#Settings_Audio_VolumeHeader" class="settings__section-header" />
-		
-		<SettingsSlider class="grey-hover-button" 
-			min="0" max="1" increment="0.01" 
-			percentage="true"
-			showdefault="false" 
-			convar="volume"
-			text="#Settings_Audio_GameVolume" />
-		<SettingsSlider class="grey-hover-button" 
-			min="0" max="1" increment="0.01"
-			percentage="true" 
-			showdefault="false" 
-			convar="snd_volume_music"
-			text="#Settings_Audio_MusicVolume" />
-		<SettingsSlider class="grey-hover-button"
-			min="0" max="1" increment="0.01"
-			percentage="true"
-			showdefault="false"
-			convar="snd_volume_ambient"
-			text="#Settings_Audio_AmbientVolume" />
-		<SettingsSlider class="grey-hover-button"
-			min="0" max="1" increment="0.01"
-			percentage="true"
-			showdefault="false"
-			convar="snd_volume_ui"
-			text="#Settings_Audio_UIVolume" />
-		<SettingsSlider class="grey-hover-button"
-			min="0" max="1" increment="0.01"
-			percentage="true"
-			showdefault="false"
-			convar="snd_volume_physics"
-			text="#Settings_Audio_PhysicsVolume"/>
-		<SettingsSlider class="grey-hover-button"
-			min="0" max="1" increment="0.01"
-			percentage="true"
-			showdefault="false"
-			convar="snd_volume_footsteps"
-			text="#Settings_Audio_FootstepsVolume" />
+		<BaseAudioSettings>
+			<Label text="#Settings_Audio_VolumeHeader" class="settings__section-header" />
 			
-		<Panel class="settings__horizontal-line" />
-		<Label text="#Settings_Audio_CaptionsHeader" class="settings__section-header" />
-		
-		<SettingsEnumDropDown class="grey-hover-button" convar="closecaption" text="#Settings_Audio_EnableCaptions">
-			<Label text="#Settings_Generic_Enabled" value="1" id="captions-enable1"/>
-			<Label text="#Settings_Generic_Disabled" value="0" id="captions-enable0"/>
-		</SettingsEnumDropDown>
-		<SettingsEnumDropDown class="grey-hover-button" convar="cc_subtitles" text="#Settings_Audio_CaptionStyle">
-			<Label text="#Settings_Audio_CaptionStyle1" value="1" id="captions-style1"/>
-			<Label text="Settings_Audio_CaptionStyle0" value="0" id="captions-style0"/>
-		</SettingsEnumDropDown>
-		
-		<Panel class="settings__horizontal-line" />
-		<Label text="#Settings_Audio_DeviceConfigHeader" class="settings__section-header" />
-		
-		<SettingsEnumDropDown class="grey-hover-button" convar="snd_surround_speakers" text="#Settings_Audio_SpeakerConfig">
-			<Label text="#Settings_Audio_SpeakerConfig_Headphones" id="speakerconfig1" value="0"/>
-			<Label text="#Settings_Audio_SpeakerConfig_Speakers_2" id="speakerconfig2" value="2"/>
-			<Label text="#Settings_Audio_SpeakerConfig_Speakers_4" id="speakerconfig3" value="4"/>
-			<Label text="#Settings_Audio_SpeakerConfig_Speakers_51" id="speakerconfig4" value="5"/>
-		</SettingsEnumDropDown>
-		
-		<SettingsEnumDropDown class="grey-hover-button" convar="" text="#Settings_Audio_OutputDevice">
-		</SettingsEnumDropDown>
+			<SettingsSlider class="grey-hover-button" 
+				min="0" max="1" increment="0.01" 
+				percentage="true"
+				showdefault="false" 
+				convar="volume"
+				text="#Settings_Audio_GameVolume" />
+			<SettingsSlider class="grey-hover-button" 
+				min="0" max="1" increment="0.01"
+				percentage="true" 
+				showdefault="false" 
+				convar="snd_volume_music"
+				text="#Settings_Audio_MusicVolume" />
+			<SettingsSlider class="grey-hover-button"
+				min="0" max="1" increment="0.01"
+				percentage="true"
+				showdefault="false"
+				convar="snd_volume_ambient"
+				text="#Settings_Audio_AmbientVolume" />
+			<SettingsSlider class="grey-hover-button"
+				min="0" max="1" increment="0.01"
+				percentage="true"
+				showdefault="false"
+				convar="snd_volume_ui"
+				text="#Settings_Audio_UIVolume" />
+			<SettingsSlider class="grey-hover-button"
+				min="0" max="1" increment="0.01"
+				percentage="true"
+				showdefault="false"
+				convar="snd_volume_physics"
+				text="#Settings_Audio_PhysicsVolume"/>
+			<SettingsSlider class="grey-hover-button"
+				min="0" max="1" increment="0.01"
+				percentage="true"
+				showdefault="false"
+				convar="snd_volume_footsteps"
+				text="#Settings_Audio_FootstepsVolume" />
+				
+			<Panel class="settings__horizontal-line" />
+			<Label text="#Settings_Audio_CaptionsHeader" class="settings__section-header" />
+			
+			<SettingsEnumDropDown class="grey-hover-button" convar="closecaption" text="#Settings_Audio_EnableCaptions">
+				<Label text="#Settings_Generic_Enabled" value="1" id="CaptionsEnable1"/>
+				<Label text="#Settings_Generic_Disabled" value="0" id="CaptionsEnable0"/>
+			</SettingsEnumDropDown>
+			<SettingsEnumDropDown class="grey-hover-button" convar="cc_subtitles" text="#Settings_Audio_CaptionStyle">
+				<Label text="#Settings_Audio_CaptionStyle1" value="1" id="CaptionsStyle1"/>
+				<Label text="Settings_Audio_CaptionStyle0" value="0" id="CaptionsStyle0"/>
+			</SettingsEnumDropDown>
+			
+			<Panel class="settings__horizontal-line" />
+			<Label text="#Settings_Audio_DeviceConfigHeader" class="settings__section-header" />
+			
+			<SettingsEnumDropDown class="grey-hover-button" convar="snd_surround_speakers" text="#Settings_Audio_SpeakerConfig">
+				<Label text="#Settings_Audio_SpeakerConfig_Headphones" id="speakerconfig1" value="0"/>
+				<Label text="#Settings_Audio_SpeakerConfig_Speakers_2" id="speakerconfig2" value="2"/>
+				<Label text="#Settings_Audio_SpeakerConfig_Speakers_4" id="speakerconfig3" value="4"/>
+				<Label text="#Settings_Audio_SpeakerConfig_Speakers_51" id="speakerconfig4" value="5"/>
+			</SettingsEnumDropDown>
+			
+			<SettingsEnumDropDown 
+				class="grey-hover-button" 
+				id="DeviceConfigurationEnum" 
+				convar="sound_device_override" 
+				text="#Settings_Audio_OutputDevice" 
+				oninputsubmit="BaseAudioDeviceConfigurationChanged()"
+			>
+				<Label id="device1" text="XXXXXX 1" />
+				<Label id="device2" text="XXXXXX 2" />
+				<Label id="device3" text="XXXXXX 3" />
+				<Label id="device4" text="XXXXXX 4" />
+				<Label id="device5" text="XXXXXX 5" />
+				<Label id="device6" text="XXXXXX 6" />
+				<Label id="device7" text="XXXXXX 7" />
+				<Label id="device8" text="XXXXXX 8" />
+			</SettingsEnumDropDown>
+		</BaseAudioSettings>
 	</Panel>
 </root>

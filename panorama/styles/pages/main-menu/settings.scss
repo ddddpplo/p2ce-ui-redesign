@@ -162,6 +162,7 @@
 }
 
 .settings-keybinder {
+    $root: &;
     border-width:0px;
     padding:0px 25px;
     margin:0px;
@@ -179,6 +180,8 @@
     &__container {
         vertical-align:center;
         horizontal-align:right;
+    }
+    &__key-container {
         background-color: #111a;
         padding:5px 12px;
         min-width:50px;
@@ -188,11 +191,36 @@
         }
     }
     &__key {
-        horizontal-align:center;
+        margin:0px;
         font-size:25px;
         font-weight:bold;
+        horizontal-align:center;
     }
     &__clear {
-        visibility:visible;
-    }
+		width: 100%;
+		height: 100%;
+		align: center center;
+		margin: 2px 4px;
+		opacity: 0.8;
+
+		background-image: url('file://{images}/close.svg');
+		background-size: 24px;
+		background-repeat: no-repeat;
+		background-position: center;
+		visibility: collapse;
+
+		transition: wash-color 0.1s ease-in-out 0s;
+
+		#{$root}:selected & {
+			visibility: visible;
+		}
+
+		&:hover {
+			wash-color: rgb(175, 175, 175);
+		}
+	}
+}
+
+BaseAudioSettings {
+    flow-children:down;
 }

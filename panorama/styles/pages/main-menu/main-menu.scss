@@ -193,7 +193,7 @@ $drawer-width: 768px;
 
 	&__fadeout {
 		animation-name: FadeOut;
-		animation-duration: 3s;
+		animation-duration: 0.3s;
 		animation-timing-function: ease-out;
 		animation-iteration-count: 1;
 		opacity: 0;
@@ -347,7 +347,7 @@ $drawer-width: 768px;
 	&--hidden {
 		animation-name: FadeOutDown;
 		animation-duration: 0.15s;
-		opacity: 0;
+		opacity:0;
 	}
 	
 	&--shown {

@@ -155,7 +155,6 @@ class MainMenu {
 			this.pageHistory.push(this.currentPage); // save the previous page so we can return to it later
 		}
 		this.currentPage = page;
-		//this.currentPage.content.SetFocus(); // revolution uses SetFocus a lot but I lowkey don't know what it does
 	}
 	
 	static onBackButtonPressed() {
