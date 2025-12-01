@@ -11,10 +11,9 @@ If you wish to use this in your mod, fork this repository into your mod folder a
 You can also optionally clone this reposotory, but forking will make it as seamless as possible to update when I add new features.\
 \
 To add your own mod's chapters to the menu, navigate to `panorama/scripts/pages/main-menu/chapter-select.ts` and replace the contents of the `chapters` array with your own map names.
-Then find and replace any instance of `#portal2_` with your own mod name so that it reads from the correct language file.\
+Then find and replace any instance of `#portal2_` with your own mod name.\
 \
-Then go into your language file (for example `resource/portal2_english.txt` but with the name of your mod, create one if you don't yet have one) and define the names of your chapters. 
-The ones in Portal 2 look like `#portal2_Chapter1_Subtitle` and yours should follow the same format\
+Then go into `panorama/localization/panorama_english.txt` and replace each `portal2_ChapterX_Subtitle` with the names of your mod's chapters.
 \
 Currently there's not much else to customize besides various styling, but I will add more to the readme as more features are added.
 
